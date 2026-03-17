@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+/* Global CSS Variables - Dark Mode (OLED Optimized) */
+:root {
+  --color-primary: #0F172A;
+  --color-background: #020617;
+  --color-background-secondary: #0F172A;
+  --color-background-tertiary: #1E293B;
+  --color-cta: #22C55E;
+  --color-error: #EF4444;
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8; /* Changed from #64748B to meet 4.5:1 contrast */
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-focus: #22C55E; /* Bright green for dark mode focus - meets 3:1 contrast on all dark backgrounds */
+}
+
+/* Light Mode Variables */
+:root:not(.dark) {
+  --color-primary: #F8FAFC;
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F8FAFC;
+  --color-background-tertiary: #F1F5F9;
+  --color-cta: #15803D; /* Changed from #16A34A to meet 4.5:1 contrast */
+  --color-error: #B91C1C; /* Changed from #DC2626 to meet 4.5:1 contrast on all backgrounds */
+  --color-text-primary: #0F172A;
+  --color-text-secondary: #475569;
+  --color-text-muted: #475569; /* Changed from #64748B to meet 4.5:1 contrast on all backgrounds */
+  --color-border: #E2E8F0;
+  --color-glass-bg: rgba(255, 255, 255, 0.8);
+  --color-focus: #15803D; /* Dark green for light mode focus - meets 3:1 contrast on all light backgrounds */
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-family: 'Fira Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+}
+
+/* Custom Utilities */
+.text-positive {
+  color: var(--color-cta);
+}
+
+.text-negative {
+  color: var(--color-error);
+}
+
+.bg-glass {
+  background-color: var(--color-glass-bg);
+  backdrop-filter: blur(8px);
+}
+
+.border-glass {
+  border: 1px solid var(--color-border);
+}
+
+/* Scrollbar Styling - Dark Mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background-color: #0F172A;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background-color: #475569;
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: #64748B;
+}
+
+/* Scrollbar Styling - Light Mode */
+:root:not(.dark) ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-track {
+  background-color: #F1F5F9;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb {
+  background-color: #CBD5E1;
+  border-radius: 9999px;
+}
+
+:root:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background-color: #94A3B8;
+}
+
+/* Skip Navigation Links */
+.skip-navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--color-cta);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s ease;
+  z-index: 10000;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Focus Visible Styles - 3px outline as per WCAG requirements */
+*:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove default focus outline for mouse users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Enhanced focus for interactive elements - 3px outline in accent color */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible,
+[role="tab"]:focus-visible,
+[role="checkbox"]:focus-visible,
+[role="radio"]:focus-visible,
+[role="switch"]:focus-visible,
+[role="menuitem"]:focus-visible,
+[role="option"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Keyboard navigation helper */
+.keyboard-nav-active *:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Focus styles for specific interactive components */
+.card:focus-visible,
+.table-row:focus-visible,
+.chart-element:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Focus within for containers */
+.focus-within-highlight:focus-within {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+/* Respect system preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Manual reduced motion toggle via class */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Preserve essential animations even with reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  /* Keep focus indicators visible */
+  *:focus-visible {
+    transition: outline 0.01ms !important;
+  }
+}
+
+.reduce-motion *:focus-visible {
+  transition: outline 0.01ms !important;
+}

@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "name": "Auto Documentation Update",
+  "description": "Monitors Python source files and prompts agent to update README or docs folder when code changes are detected",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "*.py",
+      "config.json",
+      "requirements.txt"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A source file has been modified. Please review the changes and update the relevant documentation in the README.md file or docs folder to reflect any new features, API changes, configuration updates, or usage instructions."
+  },
+  "workspaceFolderName": "trading_system",
+  "shortName": "auto-doc-update"
+}

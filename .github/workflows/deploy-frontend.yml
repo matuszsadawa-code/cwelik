@@ -1,0 +1,14 @@
+# Frontend deployment is handled automatically by Vercel's GitHub integration.
+#
+# When code is pushed to `main`, Vercel detects the change and deploys the
+# `dashboard/` directory to production automatically — no workflow needed here.
+#
+# Preview deployments are also created automatically for every pull request.
+#
+# Required Vercel setup (one-time):
+#   1. Connect the GitHub repository in the Vercel dashboard.
+#   2. Set the root directory to `dashboard`.
+#   3. Add production environment variables (VITE_API_URL, VITE_WS_URL, etc.)
+#      in Vercel → Project → Settings → Environment Variables.
+#
+# This file exists only to document that fact and satisfy the CI/CD checklist.

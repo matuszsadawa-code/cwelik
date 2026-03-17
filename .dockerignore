@@ -1,0 +1,60 @@
+# Version control
+.git
+.gitignore
+
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test artifacts
+.pytest_cache/
+.hypothesis/
+htmlcov/
+.coverage
+coverage.xml
+*.cover
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Logs (mounted as volume at runtime)
+logs/
+*.log
+
+# Database files (mounted as volume at runtime)
+db/*.db
+db/*.db-shm
+db/*.db-wal
+
+# Secrets — never bake into image
+.env
+config.json
+
+# Docs & reports (not needed in image)
+docs/
+reports/
+*.md
+
+# Spec files
+.kiro/
+
+# Node / frontend (separate build context)
+frontend/
+node_modules/
